@@ -3,4 +3,4 @@ config {
     schema: "ankit_staging"
 }
 
-select * from ${ref("sum_order_amount")}
+select * from ${ref("sum_of_total_order_amount_view")}

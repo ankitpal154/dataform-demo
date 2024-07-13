@@ -1,7 +1,0 @@
-config {
-    type: "view"
-}
-
-select customerid, sum(total_order_amount)
-from ankit_raw.orders
-group by 1
