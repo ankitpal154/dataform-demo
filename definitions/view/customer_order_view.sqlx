@@ -1,0 +1,19 @@
+config {
+    type: "view"
+}
+
+SELECT
+  distinct(A.customerid),
+  Firstname,
+  Lastname,
+  city,
+  state,
+  country,
+  orderid,
+  total_order_amount
+FROM
+  ankit_raw.customers A
+JOIN
+  ankit_raw.orders B
+ON
+  A.customerid = B.customerid
