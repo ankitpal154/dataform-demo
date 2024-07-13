@@ -1,6 +1,6 @@
 config {
     type: "table",
-    schema: "ankit_staging"
+    schema: "ankit_staging",
 }
 
 SELECT
