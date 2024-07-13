@@ -1,6 +1,6 @@
 config {
     type: "table",
-    schema: "ankit_raw1"
+    schema: "ankit_staging"
 }
 
 select * from ${ref("sum_order_amount")}
