@@ -3,5 +3,5 @@ config {
 }
 
 select customerid, sum(total_order_amount)
-from ankit_raw1.orders
+from ankit_raw.orders
 group by 1
