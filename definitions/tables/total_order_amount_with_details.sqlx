@@ -1,0 +1,19 @@
+config {
+    type: "table",
+    schema: "ankit_staging"
+}
+
+SELECT
+  distinct(Firstname),
+  Lastname,
+  city,
+  country,
+  total_amount
+FROM
+  ${ref("total_order_amount_table")} A
+JOIN
+  ${ref("customer_order_view")} B
+ON
+  A.customerid = B.customerid
+ORDER BY
+  total_amount DESC
