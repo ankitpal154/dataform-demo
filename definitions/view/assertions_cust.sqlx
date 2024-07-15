@@ -1,0 +1,8 @@
+config {
+    type : "assertion",
+    description : "testing assretions option"
+}
+
+select COUNT(*)
+from mani_raw.Customers
+where CUSTOMERID IS NULL

@@ -17,3 +17,7 @@ JOIN
   ankit_raw.orders B
 ON
   A.customerid = B.customerid
+
+
+
+
