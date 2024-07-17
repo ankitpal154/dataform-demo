@@ -1,0 +1,6 @@
+config {
+    type : "view",
+    schema : "mani_staging"
+}
+
+select * from ${ref("Employees")}
