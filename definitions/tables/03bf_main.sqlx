@@ -1,11 +1,19 @@
 config {
     type: "incremental",
-    schema: "ankit_raw",
-    uniqueKey: ["MBLNR","MJAHR","ZEILE","BSTAUS"],
-    tags: ["03bf_delta"]
+    schema: "ankit_statging",
+    uniqueKey: ["MBLNR", "MJAHR", "ZEILE", "BSTAUS"],
+    tags: ["03bf_execution"]
+
 }
 
 SELECT
-  *
+  *,
+  PARSE_DATE('%Y%m%d', SUBSTR(file_id, 11, 8)) AS extracted_date
 FROM
-  ${ref("03bfD_dacl")} ${when(incremental(), `WHERE CONCAT(MBLNR, '-', MJAHR, '-', ZEILE, '-', BSTAUS) NOT IN (SELECT CONCAT(MBLNR, '-', MJAHR, '-', ZEILE, '-', BSTAUS) FROM ${self()})`)}
+  ${ref("03bfD")}
+${when(incremental(), 
+  `WHERE PARSE_DATE('%Y%m%d', SUBSTR(file_id, 11, 8)) > (
+    SELECT MAX(PARSE_DATE('%Y%m%d', SUBSTR(file_id, 11, 8)))
+    FROM ${ref('03bf_bak')}
+  )`
+)}
