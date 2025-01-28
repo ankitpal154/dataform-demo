@@ -2,5 +2,5 @@ config {
     type: "declaration",
     database: "dev-analytics-gcp-luxasia",
     schema: "ankit_raw",
-    name: "03bf_bak"
+    name: "03bf_bak_ankit"
 }
